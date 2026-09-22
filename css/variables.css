@@ -1,0 +1,153 @@
+:root {
+
+    /* Background */
+    --bg:
+        #050914;
+
+    --bg-soft:
+        rgba(15,23,42,.45);
+
+
+
+    /* Cards */
+    --card:
+        rgba(15,25,50,.45);
+
+
+
+    /* Text */
+    --text:
+        #f8fafc;
+
+    --text-soft:
+        #cbd5e1;
+
+    --muted:
+        #94a3b8;
+
+
+
+    /* Brand Colors */
+
+    --primary:
+        #06b6d4;
+
+    --secondary:
+        #8b5cf6;
+
+    --accent:
+        #3b82f6;
+
+
+
+    /* Status */
+
+    --success:
+        #10b981;
+
+    --warning:
+        #f59e0b;
+
+    --danger:
+        #ef4444;
+
+
+
+    /* Border */
+
+    --border:
+        rgba(255,255,255,.12);
+
+
+
+    /* Shadow */
+
+    --shadow:
+        0 8px 32px rgba(0,0,0,.3);
+
+
+    --shadow-lg:
+        0 20px 60px rgba(0,0,0,.5);
+
+
+
+    /* Radius */
+
+    --radius:
+        20px;
+
+
+    --radius-lg:
+        28px;
+
+
+
+    /* Glass */
+
+    --glass:
+        rgba(255,255,255,.08);
+
+
+    --glass-highlight:
+        rgba(255,255,255,.18);
+
+
+
+    /* Animation */
+
+    --transition:
+        .3s ease;
+
+}
+
+
+
+
+
+/* LIGHT THEME */
+
+html[data-theme="light"] {
+
+
+    --bg:
+        #e0e7ff;
+
+
+    --bg-soft:
+        rgba(255,255,255,.55);
+
+
+
+    --card:
+        rgba(255,255,255,.65);
+
+
+
+    --text:
+        #0f172a;
+
+
+    --text-soft:
+        #334155;
+
+
+    --muted:
+        #475569;
+
+
+
+    --border:
+        rgba(255,255,255,.8);
+
+
+
+    --shadow:
+        0 8px 32px rgba(0,0,0,.08);
+
+
+
+    --shadow-lg:
+        0 20px 60px rgba(0,0,0,.12);
+
+
+}
