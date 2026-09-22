@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>PTEC NoteBOT - Pabna Textile Engineering College</title>
+
+    <meta name="theme-color" content="#050914">
+
+    <link rel="icon" href="logo.png">
+
+    <!-- Modular CSS -->
+    <link rel="stylesheet" href="css/variables.css">
+    <link rel="stylesheet" href="css/base.css">
+    <link rel="stylesheet" href="css/components.css">
+    <link rel="stylesheet" href="css/layout.css">
+    <link rel="stylesheet" href="css/animations.css">
+    <link rel="stylesheet" href="css/mobile.css">
+
+</head>
+
+<body>
+
+
+<!-- Splash -->
+<div id="splash">
+
+    <div class="splash-box">
+
+        <img src="logo.png"
+             class="splash-logo"
+             onerror="this.style.display='none'">
+
+        <h2>PTEC NoteBOT</h2>
+
+        <p>
+            Pabna Textile Engineering College
+        </p>
+
+
+        <div class="loader">
+            <span></span>
+        </div>
+
+    </div>
+
+</div>
+
+
+
+<!-- Background -->
+<div class="ambient"></div>
+
+
+
+<!-- Header -->
+
+<header id="header">
+
+
+<button class="icon-btn"
+        data-action="menu">
+☰
+</button>
+
+
+
+<div class="brand">
+
+<img src="logo.png"
+     class="logo"
+     onerror="this.src='assets/ptec.svg'">
+
+
+<span>
+PTEC NoteBOT
+</span>
+
+
+</div>
+
+
+
+<button class="icon-btn"
+        data-action="theme">
+🌙
+</button>
+
+
+</header>
+
+
+
+
+<!-- Side Drawer -->
+
+<aside id="drawer">
+
+
+<div class="drawer-head">
+
+<h3>
+PTEC NoteBOT
+</h3>
+
+</div>
+
+
+
+<nav>
+
+
+<button data-nav="home">
+🏠 Home
+</button>
+
+
+<button data-nav="notes">
+📚 Notes
+</button>
+
+
+<button data-nav="search">
+🔎 Search
+</button>
+
+
+<button data-nav="texgpt">
+🤖 TexGPT
+</button>
+
+
+<button data-nav="phonebook">
+☎ Phonebook
+</button>
+
+
+<button data-nav="games">
+🎮 Games
+</button>
+
+
+
+</nav>
+
+
+</aside>
+
+
+
+
+
+
+<!-- Main App -->
+
+<main id="app">
+
+</main>
+
+
+
+
+
+
+
+<!-- Bottom Navigation -->
+
+<footer id="bottom-nav">
+
+
+<button data-nav="home">
+🏠
+<span>
+Home
+</span>
+</button>
+
+
+
+<button data-nav="notes">
+📚
+<span>
+Notes
+</span>
+</button>
+
+
+
+<button data-nav="search">
+🔍
+<span>
+Search
+</span>
+</button>
+
+
+
+<button data-nav="profile">
+👤
+<span>
+Profile
+</span>
+</button>
+
+
+
+</footer>
+
+
+
+
+
+<!-- SVG fallback -->
+
+<svg id="svg-symbols"
+style="display:none">
+
+<symbol id="ptec-logo"
+viewBox="0 0 100 100">
+
+<circle cx="50"
+cy="50"
+r="45"
+fill="#06b6d4"/>
+
+
+<text x="50"
+y="60"
+text-anchor="middle"
+font-size="35"
+fill="white">
+P
+</text>
+
+
+</symbol>
+
+</svg>
+
+
+
+
+<script type="module"
+src="js/app.js">
+</script>
+
+
+</body>
+</html>
