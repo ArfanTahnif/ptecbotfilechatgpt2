@@ -1,25 +1,19 @@
-let currentRoute="home";
+let currentRoute = "home";
 
 
-
-const listeners=[];
-
+const listeners = [];
 
 
 
 export function navigate(route){
 
 
-
-currentRoute=route;
-
+currentRoute = route;
 
 
 history.pushState(
 
-{
-route
-},
+{route},
 
 "",
 "#"+route
@@ -28,13 +22,11 @@ route
 
 
 
-renderRoute();
+notify();
 
 
 
 }
-
-
 
 
 
@@ -49,9 +41,11 @@ return currentRoute;
 
 
 
-export function onRouteChange(fn){
+export function subscribe(callback){
 
-listeners.push(fn);
+
+listeners.push(callback);
+
 
 }
 
@@ -59,13 +53,12 @@ listeners.push(fn);
 
 
 
-export function renderRoute(){
-
+function notify(){
 
 
 listeners.forEach(
 
-fn=>fn(currentRoute)
+callback=>callback(currentRoute)
 
 );
 
@@ -84,16 +77,18 @@ window.addEventListener(
 
 
 const route =
+
 location.hash
 .replace("#","")
-||
-"home";
+
+|| "home";
 
 
-currentRoute=route;
+
+currentRoute = route;
 
 
-renderRoute();
+notify();
 
 
 
