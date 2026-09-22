@@ -1,31 +1,163 @@
 import {
+
 initTheme,
 toggleTheme
+
 }
+
 from "./core/theme.js";
 
 
 import {
+
 initLifecycle
+
 }
+
 from "./core/lifecycle.js";
 
 
 import {
+
 navigate,
-onRouteChange
+subscribe
+
 }
+
 from "./core/router.js";
+
+
+
+
+import {
+
+renderNotes
+
+}
+
+from "./features/notes.js";
+
+
+import {
+
+renderSearch
+
+}
+
+from "./features/search.js";
+
+
+import {
+
+renderPhonebook
+
+}
+
+from "./features/phonebook.js";
+
+
+import {
+
+renderTexGPT
+
+}
+
+from "./features/texgpt.js";
+
 
 
 
 
 
 const app =
-document.querySelector(
-"#app"
-);
+document.querySelector("#app");
 
+
+
+
+
+function renderHome(){
+
+
+return `
+
+
+<section class="hero">
+
+
+<h1>
+PTEC NoteBOT
+</h1>
+
+
+<p>
+Smart Textile Engineering Assistant
+</p>
+
+
+
+</section>
+
+
+
+
+<div class="grid">
+
+
+
+<div class="card"
+data-nav="notes">
+
+📚
+<br>
+Notes
+
+</div>
+
+
+
+<div class="card"
+data-nav="search">
+
+🔎
+<br>
+Search
+
+</div>
+
+
+
+
+<div class="card"
+data-nav="texgpt">
+
+🤖
+<br>
+TexGPT
+
+</div>
+
+
+
+
+<div class="card"
+data-nav="phonebook">
+
+☎
+<br>
+Phonebook
+
+</div>
+
+
+
+</div>
+
+
+
+`;
+
+}
 
 
 
@@ -35,43 +167,55 @@ function render(route){
 
 
 
-app.innerHTML = `
-
-
-<section class="hero rv">
-
-
-<h1>
-PTEC NoteBOT
-</h1>
-
-
-<p>
-Smart Academic Assistant
-</p>
+switch(route){
 
 
 
-</section>
+case "notes":
+
+app.innerHTML =
+renderNotes();
+
+break;
 
 
 
-<div class="card rv">
+case "search":
 
-<h3>
-Current Page
-</h3>
+app.innerHTML =
+renderSearch();
 
-
-<p>
-${route}
-</p>
+break;
 
 
-</div>
+
+case "texgpt":
+
+app.innerHTML =
+renderTexGPT();
+
+break;
 
 
-`;
+
+case "phonebook":
+
+app.innerHTML =
+renderPhonebook();
+
+break;
+
+
+
+default:
+
+
+app.innerHTML =
+renderHome();
+
+
+
+}
 
 
 
@@ -84,7 +228,8 @@ ${route}
 
 
 
-function events(){
+
+function setupEvents(){
 
 
 
@@ -92,18 +237,18 @@ document.addEventListener(
 
 "click",
 
-e=>{
+event=>{
 
 
 const nav =
-e.target.closest(
+
+event.target.closest(
 "[data-nav]"
 );
 
 
 
 if(nav){
-
 
 navigate(
 nav.dataset.nav
@@ -115,15 +260,16 @@ nav.dataset.nav
 
 
 
-
 const action =
-e.target.closest(
+
+event.target.closest(
 "[data-action]"
 );
 
 
 
 if(action){
+
 
 
 if(
@@ -144,8 +290,9 @@ toggleTheme();
 
 );
 
-
 }
+
+
 
 
 
@@ -154,19 +301,19 @@ toggleTheme();
 function start(){
 
 
+
 initTheme();
 
 
 initLifecycle();
 
 
-events();
+
+subscribe(render);
 
 
 
-onRouteChange(
-render
-);
+setupEvents();
 
 
 
