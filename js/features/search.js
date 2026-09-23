@@ -6,11 +6,21 @@ from "../data/notes.js";
 
 
 
-export function searchAll(text){
+
+export function searchAll(keyword){
+
+
+if(!keyword)
+return [];
 
 
 
-let result=[];
+keyword =
+keyword.toLowerCase();
+
+
+
+let results=[];
 
 
 
@@ -24,27 +34,32 @@ Object.entries(depts)
 .forEach(([dept,subjects])=>{
 
 
-subjects.forEach(item=>{
+subjects.forEach(subject=>{
 
 
 if(
 
-item.title
+subject.title
 .toLowerCase()
-.includes(
-text.toLowerCase()
-)
+.includes(keyword)
+
+||
+
+subject.code
+.toLowerCase()
+.includes(keyword)
 
 ){
 
 
-result.push({
+results.push({
 
 level,
 
-dept,
+department:dept,
 
-...item
+...subject
+
 
 });
 
@@ -52,8 +67,6 @@ dept,
 }
 
 
-});
-
 
 });
 
@@ -61,12 +74,17 @@ dept,
 });
 
 
+});
 
-return result;
+
+
+return results;
 
 
 
 }
+
+
 
 
 
@@ -75,34 +93,54 @@ return result;
 export function renderSearch(){
 
 
+
 return `
+
+
+<section class="hero">
+
+
+<h1>
+🔎 Search
+</h1>
+
+
+<p>
+Find notes, subjects and materials
+</p>
+
+
+</section>
+
+
 
 
 <div class="card">
 
 
-<h2>
-🔎 Search
-</h2>
-
-
 <input
 
-id="global-search"
+id="search-input"
 
-placeholder="Search subject..."
+placeholder="Search subject/code..."
 
 >
 
 
 
-<div id="search-result">
+<div id="search-output">
+
+
+<p>
+Start typing...
+
+</p>
+
 
 </div>
 
 
 </div>
-
 
 
 `;
