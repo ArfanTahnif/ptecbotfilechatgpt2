@@ -4,7 +4,9 @@ initTheme,
 toggleTheme
 
 }
+
 from "./core/theme.js";
+
 
 
 import {
@@ -12,7 +14,9 @@ import {
 initLifecycle
 
 }
+
 from "./core/lifecycle.js";
+
 
 
 import {
@@ -21,16 +25,22 @@ navigate,
 subscribe
 
 }
+
 from "./core/router.js";
 
 
+
+
+// Features
 
 import {
 
 renderNotes
 
 }
+
 from "./features/notes.js";
+
 
 
 import {
@@ -38,7 +48,9 @@ import {
 renderSearch
 
 }
+
 from "./features/search.js";
+
 
 
 import {
@@ -46,7 +58,9 @@ import {
 renderPhonebook
 
 }
+
 from "./features/phonebook.js";
+
 
 
 import {
@@ -54,7 +68,9 @@ import {
 renderTexGPT
 
 }
+
 from "./features/texgpt.js";
+
 
 
 import {
@@ -64,7 +80,22 @@ openGame,
 handleGameAction
 
 }
+
 from "./features/games.js";
+
+
+
+
+// Admin
+
+import {
+
+renderAdmin
+
+}
+
+from "./admin/dashboard.js";
+
 
 
 
@@ -78,11 +109,11 @@ document.querySelector("#app");
 
 
 
-
 function renderHome(){
 
 
 return `
+
 
 
 <section class="hero">
@@ -94,11 +125,13 @@ PTEC NoteBOT
 
 
 <p>
-Smart Academic Assistant
+Smart Textile Engineering Assistant
 </p>
 
 
+
 </section>
+
 
 
 
@@ -110,11 +143,16 @@ Smart Academic Assistant
 <div class="card"
 data-nav="notes">
 
+
 📚
+
 <br>
+
 Notes
 
+
 </div>
+
 
 
 
@@ -122,11 +160,16 @@ Notes
 <div class="card"
 data-nav="search">
 
+
 🔎
+
 <br>
+
 Search
 
+
 </div>
+
 
 
 
@@ -134,11 +177,16 @@ Search
 <div class="card"
 data-nav="texgpt">
 
+
 🤖
+
 <br>
+
 TexGPT
 
+
 </div>
+
 
 
 
@@ -146,11 +194,16 @@ TexGPT
 <div class="card"
 data-nav="phonebook">
 
+
 ☎
+
 <br>
+
 Phonebook
 
+
 </div>
+
 
 
 
@@ -158,15 +211,38 @@ Phonebook
 <div class="card"
 data-nav="games">
 
+
 🎮
+
 <br>
+
 Games
 
+
+</div>
+
+
+
+
+
+<div class="card"
+data-nav="admin">
+
+
+⚙
+
+<br>
+
+Admin
+
+
 </div>
 
 
 
+
 </div>
+
 
 
 `;
@@ -179,7 +255,11 @@ Games
 
 
 
+
+
+
 function render(route){
+
 
 
 switch(route){
@@ -188,52 +268,84 @@ switch(route){
 
 case "notes":
 
+
 app.innerHTML =
 renderNotes();
 
+
 break;
+
 
 
 
 
 case "search":
 
+
 app.innerHTML =
 renderSearch();
 
+
 break;
+
+
 
 
 
 case "texgpt":
 
+
 app.innerHTML =
 renderTexGPT();
 
+
 break;
+
+
 
 
 
 case "phonebook":
 
+
 app.innerHTML =
 renderPhonebook();
 
+
 break;
+
+
 
 
 
 case "games":
 
+
 app.innerHTML =
 renderGames();
+
 
 break;
 
 
 
 
+
+case "admin":
+
+
+app.innerHTML =
+renderAdmin();
+
+
+break;
+
+
+
+
+
 default:
+
 
 app.innerHTML =
 renderHome();
@@ -244,6 +356,7 @@ renderHome();
 
 
 }
+
 
 
 
@@ -271,15 +384,24 @@ event.target.closest(
 
 
 
+
 if(nav){
+
 
 navigate(
 nav.dataset.nav
 );
 
+
+closeDrawer();
+
+
 return;
 
+
 }
+
+
 
 
 
@@ -293,26 +415,34 @@ event.target.closest(
 
 
 
-
 if(action){
 
 
 
-if(
-action.dataset.action==="theme"
+switch(
+action.dataset.action
 ){
+
+
+
+case "theme":
 
 toggleTheme();
 
-}
+break;
 
 
 
 
+case "menu":
 
-if(
-action.dataset.action==="start-game"
-){
+toggleDrawer();
+
+break;
+
+
+
+case "start-game":
 
 
 openGame(
@@ -320,7 +450,12 @@ action.dataset.game
 );
 
 
+break;
+
+
+
 }
+
 
 
 }
@@ -352,7 +487,47 @@ event.target
 
 
 
+function toggleDrawer(){
+
+
+const drawer =
+document.querySelector("#drawer");
+
+
+drawer?.classList.toggle(
+"active"
+);
+
+
+
+}
+
+
+
+
+
+
+function closeDrawer(){
+
+
+document
+.querySelector("#drawer")
+?.classList.remove(
+"active"
+);
+
+
+}
+
+
+
+
+
+
+
+
 function start(){
+
 
 
 initTheme();
@@ -371,6 +546,16 @@ subscribe(render);
 
 
 render("home");
+
+
+
+}
+
+
+
+
+
+start();
 
 
 }
