@@ -4,7 +4,6 @@ initTheme,
 toggleTheme
 
 }
-
 from "./core/theme.js";
 
 
@@ -13,7 +12,6 @@ import {
 initLifecycle
 
 }
-
 from "./core/lifecycle.js";
 
 
@@ -23,9 +21,7 @@ navigate,
 subscribe
 
 }
-
 from "./core/router.js";
-
 
 
 
@@ -34,7 +30,6 @@ import {
 renderNotes
 
 }
-
 from "./features/notes.js";
 
 
@@ -43,7 +38,6 @@ import {
 renderSearch
 
 }
-
 from "./features/search.js";
 
 
@@ -52,7 +46,6 @@ import {
 renderPhonebook
 
 }
-
 from "./features/phonebook.js";
 
 
@@ -61,9 +54,17 @@ import {
 renderTexGPT
 
 }
-
 from "./features/texgpt.js";
 
+
+import {
+
+renderGames,
+openGame,
+handleGameAction
+
+}
+from "./features/games.js";
 
 
 
@@ -71,6 +72,8 @@ from "./features/texgpt.js";
 
 const app =
 document.querySelector("#app");
+
+
 
 
 
@@ -91,9 +94,8 @@ PTEC NoteBOT
 
 
 <p>
-Smart Textile Engineering Assistant
+Smart Academic Assistant
 </p>
-
 
 
 </section>
@@ -113,6 +115,7 @@ data-nav="notes">
 Notes
 
 </div>
+
 
 
 
@@ -151,8 +154,19 @@ Phonebook
 
 
 
+
+<div class="card"
+data-nav="games">
+
+🎮
+<br>
+Games
+
 </div>
 
+
+
+</div>
 
 
 `;
@@ -163,8 +177,9 @@ Phonebook
 
 
 
-function render(route){
 
+
+function render(route){
 
 
 switch(route){
@@ -177,6 +192,7 @@ app.innerHTML =
 renderNotes();
 
 break;
+
 
 
 
@@ -207,20 +223,27 @@ break;
 
 
 
-default:
+case "games":
 
+app.innerHTML =
+renderGames();
+
+break;
+
+
+
+
+default:
 
 app.innerHTML =
 renderHome();
 
 
-
 }
 
 
 
 }
-
 
 
 
@@ -254,6 +277,7 @@ navigate(
 nav.dataset.nav
 );
 
+return;
 
 }
 
@@ -265,6 +289,8 @@ const action =
 event.target.closest(
 "[data-action]"
 );
+
+
 
 
 
@@ -282,7 +308,31 @@ toggleTheme();
 
 
 
+
+
+if(
+action.dataset.action==="start-game"
+){
+
+
+openGame(
+action.dataset.game
+);
+
+
 }
+
+
+}
+
+
+
+
+
+
+handleGameAction(
+event.target
+);
 
 
 
@@ -290,7 +340,11 @@ toggleTheme();
 
 );
 
+
+
 }
+
+
 
 
 
@@ -301,7 +355,6 @@ toggleTheme();
 function start(){
 
 
-
 initTheme();
 
 
@@ -309,16 +362,15 @@ initLifecycle();
 
 
 
-subscribe(render);
-
-
-
 setupEvents();
 
 
 
-render("home");
+subscribe(render);
 
+
+
+render("home");
 
 
 }
